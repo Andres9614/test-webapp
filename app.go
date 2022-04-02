@@ -9,6 +9,8 @@ import (
 func main() {
 	http.HandleFunc("/", HelloServer)
 	http.HandleFunc("/basic", CustomServer)
+	http.HandleFunc("/jejexime", CustomServer)
+
 	http.ListenAndServe(":8080", nil)
 }
 
