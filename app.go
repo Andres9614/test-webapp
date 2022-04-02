@@ -8,7 +8,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", HelloServer)
-	http.HandleFunc("/custom", CustomServer)
+	http.HandleFunc("/basic", CustomServer)
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -18,7 +18,7 @@ func HelloServer(w http.ResponseWriter, r *http.Request) {
 
 func CustomServer(w http.ResponseWriter, r *http.Request) {
 	// modificar por el archivo que quieren mostrar
-	dat, err := os.ReadFile("files/basic.html")
+	dat, err := os.ReadFile("files/" + r.URL.Path[1:] + ".html")
 	if err != nil {
 		fmt.Fprintf(w, "No se pudo encontrar el archivo, revise la ruta")
 		return
